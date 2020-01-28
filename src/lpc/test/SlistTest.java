@@ -1,6 +1,6 @@
-package lpc.main;
+package lpc.test;
 
-import lpc.list.ListNode;
+import lpc.node.ListNode;
 import lpc.list.Slist;
 import java.util.Scanner;
 
@@ -24,7 +24,8 @@ public class SlistTest {
         in = new Scanner(System.in);
         do{
             System.out.println("1.向单链表尾部添加数据节点    2.向单链表头部添加数据节点    3.向单链表中指定位置添加数据节点");
-            System.out.println("4.删除单链表的头结点（第一个节点）    5.删除单链表中间的节点    0.返回上层菜单");
+            System.out.println("4.删除单链表的头结点（第一个节点）    5.删除单链表中间的节点    6.从单链表中查找数据\n" +
+                               "0.返回上层菜单");
             choose = in.nextInt();
             switch (choose){
                 case 1:
@@ -41,6 +42,9 @@ public class SlistTest {
                     break;
                 case 5:
                     deleteIndex();
+                    break;
+                case 6:
+                    indexOf();
                     break;
                 case 0:
                     return;
@@ -132,5 +136,19 @@ public class SlistTest {
         list.printList();
     }
 
-
+    /**
+     * 测试从单链表中查找数据的功能
+     */
+    private void indexOf(){
+        in = new Scanner(System.in);
+        System.out.print("请输入要查找的数字：");
+        int data = in.nextInt();
+        System.out.println();
+        int index = list.indexOf(data);
+        if(index == -1){
+            System.out.println("本单链表中找不到‘"+data+"’");
+        }else{
+            System.out.println("节点值为："+data+" 的节点在单链表中的位置是："+index);
+        }
+    }
 }

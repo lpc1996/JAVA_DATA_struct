@@ -1,4 +1,4 @@
-package lpc.list;
+package lpc.node;
 
 /**
  * @author 濃霧-遠方

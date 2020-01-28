@@ -1,5 +1,6 @@
 package lpc.list;
 
+import lpc.node.ListNode;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -9,16 +10,15 @@ import org.jetbrains.annotations.NotNull;
 @SuppressWarnings({"unused", "JavaDoc"})
 public class Slist{
 
-    private ListNode head;
-    private ListNode last;
+    private ListNode head = null;
+    private ListNode last = null;
     private int length = 0;
 
     /**
      * 类的构造函数，创建单链表时对单链表进行初始化
      */
     public Slist(){
-        head = null;
-        last = null;
+
     }
 
     /**
@@ -173,5 +173,26 @@ public class Slist{
     public void deleteAll(){
         this.head = this.last = null;
         this.length = 0;
+    }
+
+    /**
+     * 在单链表中查找与data的值相等的节点的位置
+     * @param data 要查找的数据
+     * @return 如果找到返回该节点的位置，否则，返回-1
+     */
+    public int indexOf(int data){
+        if(length == 0){
+            System.out.println("链表为空！");
+            return -1;
+        }
+        int index = -1;
+        ListNode node = head;
+        for(int i=0; i < length; i++,node = node.getNext()){
+            if(node.getData() == data){
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 }
