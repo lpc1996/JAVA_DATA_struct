@@ -111,4 +111,22 @@ public class DllList implements List{
             System.out.println("要插入的位置不在双向链表中");
         }
     }
+
+    /**
+     * 删除双向链表的头结点
+     */
+    public void deleteFirst(){
+        if(this.length == 0){
+            System.out.println("此双向链表已为空！");
+            return;
+        }
+        if(this.length == 1){
+            this.head = this.last = null;
+            this.length = 0;
+        }else{
+            this.head = this.head.getNext();
+            this.head.setPrev(null);
+            this.length--;
+        }
+    }
 }

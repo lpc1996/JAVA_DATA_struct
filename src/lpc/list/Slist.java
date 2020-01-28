@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
  * @author 濃霧-遠方
  * 单链表功能的java实现
  */
-@SuppressWarnings({"unused", "JavaDoc"})
+@SuppressWarnings({"unused"})
 public class Slist implements List{
 
     private ListNode head;
@@ -33,15 +33,15 @@ public class Slist implements List{
 
     /**
      * 返回单链表头结点
-     * @return
+     * @return 返回单链表的头结点
      */
     public ListNode getHead() {
         return head;
     }
 
     /**
-     *
-     * @return
+     *返回单链表的尾结点
+     * @return 返回单链表的尾结点
      */
     public ListNode getLast() {
         return last;
