@@ -22,11 +22,18 @@ public class DllListTest {
         int choose;
         in = new Scanner(System.in);
         do{
-            System.out.println("1.向双向链表头部添加节点    0.返回上级菜单");
+            System.out.println("1.向双向链表头部添加节点    2.向双向链表尾部添加节点    3.向双向链表中任意位置添加节点\n" +
+                               "0.返回上级菜单");
             choose = in.nextInt();
             switch(choose){
                 case 1:
-                    addFirst();
+                    add(true);
+                    break;
+                case 2:
+                    add(false);
+                    break;
+                case 3:
+                    addIndex();
                     break;
                 case 0:
                     return;
@@ -37,9 +44,10 @@ public class DllListTest {
     }
 
     /**
-     * 测试向双向链表头部添加数据的功能
+     * 测试向双向链表头部或尾部添加数据的功能
+     * @param b true则向头部添加，false则向尾部添加
      */
-    private void addFirst(){
+    private void add(boolean b){
         System.out.println("添加前链表中数据");
         list.printList();
         in = new Scanner(System.in);
@@ -50,8 +58,29 @@ public class DllListTest {
         for(int i=0; i<num; i++){
             System.out.println("请输入第"+(i+1)+"个数字");
             data = in.nextInt();
-            list.addFirst(new DllNode(data));
+            if(b){
+                list.addFirst(data);
+            }else{
+                list.addLast(data);
+            }
+
         }
+        System.out.println("添加后链表中数据");
+        list.printList();
+    }
+
+    /**
+     * 测试向双向链表的任一位置添加节点
+     */
+    private void addIndex(){
+        System.out.println("添加前链表中数据");
+        list.printList();
+        in = new Scanner(System.in);
+        System.out.print("请输入要添加数据的位置：");
+        int index = in.nextInt();
+        System.out.println("请输入要添加的数据");
+        int data = in.nextInt();
+        list.addIndex(data,index);
         System.out.println("添加后链表中数据");
         list.printList();
     }

@@ -8,17 +8,19 @@ import org.jetbrains.annotations.NotNull;
  * 单链表功能的java实现
  */
 @SuppressWarnings({"unused", "JavaDoc"})
-public class Slist{
+public class Slist implements List{
 
-    private ListNode head = null;
-    private ListNode last = null;
-    private int length = 0;
+    private ListNode head;
+    private ListNode last;
+    private int length;
 
     /**
      * 类的构造函数，创建单链表时对单链表进行初始化
      */
     public Slist(){
-
+        this.head = null;
+        this.last = null;
+        this.length = 0;
     }
 
     /**
@@ -48,6 +50,7 @@ public class Slist{
     /**
      * 将链表中所有数据打印在屏幕上，每10个数据为一行
      */
+    @Override
     public void printList(){
         System.out.println("链表长度为："+length);
         if(length > 0){

@@ -6,7 +6,7 @@ import lpc.node.DllNode;
  * 双向链表的功能实现
  * @author 濃霧-遠方
  */
-public class DllList {
+public class DllList implements List{
 
     private DllNode head;
     private DllNode last;
@@ -33,6 +33,7 @@ public class DllList {
     /**
      * 将双向链表中所有数据打印在屏幕上
      */
+    @Override
     public void printList(){
         System.out.println("本双向链表的长度为："+this.length);
         if(this.length > 0){
@@ -53,9 +54,10 @@ public class DllList {
 
     /**
      * 向双向链表头部添加节点
-     * @param node 要在双向链表头部添加的节点
+     * @param data 要在双向链表头部添加的数据
      */
-    public void addFirst(DllNode node){
+    public void addFirst(int data){
+        DllNode node = new DllNode(data);
         if(length == 0){
             this.head = this.last = node;
         }else{
@@ -68,9 +70,10 @@ public class DllList {
 
     /**
      * 向双向链表尾部添加节点
-     * @param node 要添加在双向链表尾部的节点
+     * @param data 要添加在双向链表尾部的数据
      */
-    public void addLast(DllNode node){
+    public void addLast(int data){
+        DllNode node = new DllNode(data);
         if(length == 0){
             this.head = this.last = node;
         }else{
@@ -79,5 +82,33 @@ public class DllList {
             this.last = node;
         }
         this.length++;
+    }
+
+    /**
+     * 向双向链表任意位置添加节点
+     * @param data 要向双向链表中添加的数据
+     * @param index 要添加节点的位置
+     */
+    public void addIndex(int data,int index){
+        if(index == 0){
+            addFirst(data);
+        }else if(index == this.length){
+            addLast(data);
+        }else if(index > 0 && index < this.length){
+            DllNode currentNode = this.head;
+            DllNode node = new DllNode(data);
+            //for循环用于寻找要插入位置的节点
+            for(int i=0; i < index; i++){
+                currentNode = currentNode.getNext();
+            }
+            DllNode prevNode = currentNode.getPrev();
+            node.setNext(currentNode);
+            currentNode.setPrev(node);
+            prevNode.setNext(node);
+            node.setPrev(prevNode);
+            this.length++;
+        }else{
+            System.out.println("要插入的位置不在双向链表中");
+        }
     }
 }
