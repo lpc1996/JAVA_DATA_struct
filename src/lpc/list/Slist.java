@@ -4,18 +4,18 @@ import lpc.node.ListNode;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author 濃霧-遠方
  * 单链表功能的java实现
+ * @author 濃霧-遠方
  */
 @SuppressWarnings({"unused"})
 public class Slist implements List{
 
-    private ListNode head;
-    private ListNode last;
-    private int length;
+    private ListNode head;  //单链表头结点
+    private ListNode last;  //单链表尾结点
+    private int length;     //单链表长度
 
     /**
-     * 类的构造函数，创建单链表时对单链表进行初始化
+     * 类的构造函数，创建单链表时对单链表进行初始化。
      */
     public Slist(){
         this.head = null;
@@ -25,7 +25,7 @@ public class Slist implements List{
 
     /**
      * 返回单链表长度
-     * @return length
+     * @return 返回单链表长度
      */
     public int getLength() {
         return length;

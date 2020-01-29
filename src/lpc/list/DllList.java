@@ -6,6 +6,7 @@ import lpc.node.DllNode;
  * 双向链表的功能实现
  * @author 濃霧-遠方
  */
+@SuppressWarnings("AlibabaRemoveCommentedCode")
 public class DllList implements List{
 
     private DllNode head;
@@ -18,14 +19,26 @@ public class DllList implements List{
         this.length = 0;
     }
 
+    /**
+     * 返回单链表的尾结点
+     * @return 返回双向链表的尾结点
+     */
     public DllNode getLast() {
         return last;
     }
 
+    /**
+     * 返回双向链表的头结点
+     * @return 返回双向链表的头结点
+     */
     public DllNode getHead() {
         return head;
     }
 
+    /**
+     * 获取双向链表的长度
+     * @return 返回双向链表的长度
+     */
     public int getLength() {
         return length;
     }
@@ -37,7 +50,7 @@ public class DllList implements List{
     public void printList(){
         System.out.println("本双向链表的长度为："+this.length);
         if(this.length > 0){
-            System.out.println("单链表中数据如下：");
+            System.out.println("本双向链表中数据如下：");
             DllNode current = this.head;
             for(int i=0; i<10 && current != null; i++,current = current.getNext()){
                 System.out.print(current.getData());
@@ -126,6 +139,48 @@ public class DllList implements List{
         }else{
             this.head = this.head.getNext();
             this.head.setPrev(null);
+            this.length--;
+        }
+    }
+
+    /**
+     * 删除双向链表尾结点
+     */
+    public void deleteLast(){
+        if(this.length == 0){
+            System.out.println("此双向链表已为空！");
+            return;
+        }
+        if(this.length == 1){
+            this.head = this.last = null;
+            this.length = 0;
+        }else{
+            this.last = this.last.getPrev();
+            this.last.setNext(null);
+            this.length--;
+        }
+    }
+
+    /**
+     * 删除双向链表中建任意一个节点
+     * @param index 要删除节点位置
+     */
+    public void deleteIndex(int index){
+        if(this.length == 0){
+            System.out.println("此双向链表已为空！");
+            return;
+        }
+        if(index == 0){
+            deleteFirst();
+        }else if(index == this.length - 1){
+            deleteLast();
+        }else if(index > 0 && index < this.length-1){
+            DllNode currentNode = this.head;
+            for(int i=0; i<index; i++){
+                currentNode = currentNode.getNext();
+            }
+            DllNode prevNode = currentNode.getPrev();
+            prevNode.setNext(currentNode.getNext());
             this.length--;
         }
     }
